@@ -87,7 +87,7 @@ class RenderSelectedStripsOperator(bpy.types.Operator):
         current_frame_old = bpy.context.scene.frame_current
 
         # Check if there are any selected strips
-        if not any(strip.select for strip in sequencer.sequences_all):
+        if not any(strip.select for strip in sequencer.strips_all):
             self.report({"ERROR"}, "No strips selected")
             return {"CANCELLED"}
 
