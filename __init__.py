@@ -92,7 +92,7 @@ class RenderSelectedStripsOperator(bpy.types.Operator):
             return {"CANCELLED"}
 
         # Get the selected sequences in the sequencer
-        selected_sequences = bpy.context.selected_sequences
+        selected_sequences = bpy.context.selected_strips
 
         # Get the first empty channel above all strips
         insert_channel_total = 1
