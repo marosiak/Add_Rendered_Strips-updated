@@ -34,8 +34,8 @@ from datetime import date
 
 
 def find_first_empty_channel(start_frame, end_frame):
-    for ch in range(1, len(bpy.context.scene.sequence_editor.sequences_all) + 1):
-        for seq in bpy.context.scene.sequence_editor.sequences_all:
+    for ch in range(1, len(bpy.context.scene.sequence_editor.strips_all) + 1):
+        for seq in bpy.context.scene.sequence_editor.strips_all:
             if (
                 seq.channel == ch
                 and seq.frame_final_start < end_frame
@@ -96,7 +96,7 @@ class RenderSelectedStripsOperator(bpy.types.Operator):
 
         # Get the first empty channel above all strips
         insert_channel_total = 1
-        for s in sequencer.sequences_all:
+        for s in sequencer.strips_all:
             if s.channel >= insert_channel_total:
                 insert_channel_total = s.channel + 1
 
@@ -105,7 +105,7 @@ class RenderSelectedStripsOperator(bpy.types.Operator):
             if strip.type in {"MOVIE", "IMAGE", "SOUND", "SCENE", "TEXT", "COLOR", "META", "MASK"}:
 
                 # Deselect all strips in the current scene
-                for s in sequencer.sequences_all:
+                for s in sequencer.strips_all:
                     s.select = False
 
                 # Select the current strip in the current scene
